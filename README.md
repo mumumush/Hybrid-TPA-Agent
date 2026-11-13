@@ -4,7 +4,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Architecture: 4--Layer](https://img.shields.io/badge/Architecture-4--Layer%20Decoupled-green.svg)](#系統架構)
-[![GitHub](https://img.shields.io/badge/GitHub-ping29065147-181717.svg?logo=github)](https://github.com/ping29065147/Hybrid-TPA-Agent)
+[![GitHub](https://img.shields.io/badge/GitHub-mumumush-181717.svg?logo=github)](https://github.com/mumumush/Hybrid-TPA-Agent)
 
 ---
 
@@ -146,14 +146,13 @@ streamlit run app.py
 ## 連接你的 GitHub (GitHub Setup)
 
 本機目前已為你配置好 Git 使用者設定：
-- **用戶名稱 (Name)**: `ping29065147`
-- **電子郵件 (Email)**: `pinghe.yeh@gmail.com`
+- **用戶名稱 (GitHub Username)**: `mumumush`
 
 ### 快速推送到 GitHub 步驟：
 1. 請至 [GitHub.com/new](https://github.com/new) 建立一個名為 `Hybrid-TPA-Agent` 的儲存庫（Repository）。
 2. 在本專案目錄下執行以下指令（或直接執行 `./setup_github.ps1`）：
 ```powershell
-git remote add origin https://github.com/ping29065147/Hybrid-TPA-Agent.git
+git remote set-url origin https://github.com/mumumush/Hybrid-TPA-Agent.git
 git branch -M main
 git push -u origin main
 ```

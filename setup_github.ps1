@@ -5,7 +5,7 @@ Write-Host "======================================================" -ForegroundC
 Write-Host "  Hybrid TPA-Agent: GitHub 遠端儲存庫連接精靈" -ForegroundColor Cyan
 Write-Host "======================================================" -ForegroundColor Cyan
 
-$username = "ping29065147"
+$username = "mumumush"
 $repoName = "Hybrid-TPA-Agent"
 $remoteUrl = "https://github.com/$username/$repoName.git"
 
