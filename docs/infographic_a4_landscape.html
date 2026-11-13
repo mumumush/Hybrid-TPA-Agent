@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>Hybrid TPA-Agent: 混合式短線交易智慧代理人系統 - A4 橫式高密度資訊圖表</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 6mm;
+    }
+    @media print {
+      body {
+        background: #0f172a !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print { display: none; }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--background, #0b0f19);
+      color: var(--foreground, #f1f5f9);
+    }
+    .badge-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: 800;
+      font-size: 0.75rem;
+      background-color: #3b82f6;
+      color: #ffffff;
+      margin-right: 0.4rem;
+      flex-shrink: 0;
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body class="p-3 text-[12px] leading-relaxed select-none">
+  <!-- 頂部標題列 -->
+  <header class="flex items-center justify-between pb-2 mb-2 border-b border-slate-700">
+    <div class="flex items-center space-x-3">
+      <div class="px-2.5 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded font-black text-sm tracking-wider text-white shadow">
+        HYBRID TPA-AGENT
+      </div>
+      <div>
+        <h1 class="text-base font-bold tracking-tight text-white flex items-center gap-2">
+          混合式短線交易智慧代理人系統
+          <span class="text-xs font-normal text-slate-400">｜ 期末專題系統架構與實證研究 A4 橫式全景圖</span>
+        </h1>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 text-[11px]">
+      <span class="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">四層功能解耦</span>
+      <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">Walk-Forward 防洩漏</span>
+      <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800">CoT 情境推理</span>
+      <span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">期望值硬風控 (E > 0)</span>
+      <button onclick="window.print()" class="no-print px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded border border-slate-600 cursor-pointer font-medium transition">
+        🖨️ 列印 / 轉存 PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- 主內容網格: 6 大模組 (3欄 x 2行 高密度排版) -->
+  <div class="grid grid-cols-3 gap-2.5">
+
+    <!-- [01] 核心問題與實證數據痛點 -->
+    <div class="glass-card p-2.5 flex flex-col justify-between border-t-2 border-t-rose-500">
+      <div>
+        <div class="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-800">
+          <div class="font-bold text-slate-100 flex items-center">
+            <span class="badge-num bg-rose-600">01</span>
+            <span>問題實證與市場痛點 (Empirical Evidence)</span>
+          </div>
+          <span class="text-[10px] text-rose-400 font-mono">FINRA / SSRN 2019-2024</span>
+        </div>
+
+        <ul class="space-y-1.5 text-slate-300">
+          <li class="bg-slate-900/60 p-1.5 rounded border border-slate-800">
+            <strong class="text-rose-300 font-semibold">1.1 巴西 1,551 位當沖客 300 天實證：</strong>
+            <div class="text-slate-300 mt-0.5 pl-2 border-l-2 border-rose-500/50">
+              • <strong class="text-white">97% 個人交易者最終虧損</strong>；僅 1.1% 年化達最低工資，僅 0.5% 超過銀行櫃員起薪。<br>
+              • 統計證實：<span class="text-rose-400">交易時間越長並未衍生獲利學習效應</span>（Chague et al.）。
+            </div>
+          </li>
+          <li class="bg-slate-900/60 p-1.5 rounded border border-slate-800">
+            <strong class="text-amber-300 font-semibold">1.2 FINRA 監管警告 (Rule 2270 / Notice 24-13)：</strong>
+            <p class="text-slate-300 mt-0.5">
+              高頻決策易受恐懼貪婪主觀干擾；槓桿放大虧損、流動性驟降與 <span class="text-amber-300">API 中斷技術故障</span> 構成系統性破產風險。
+            </p>
+          </li>
+          <li class="bg-slate-900/60 p-1.5 rounded border border-slate-800">
+            <strong class="text-indigo-300 font-semibold">1.3 交易摩擦成本黑洞測算：</strong>
+            <p class="text-slate-300 mt-0.5">
+              單筆成本 $16 美元、日均 29 筆，年化需 <strong class="text-white">$111,360 美元毛利</strong> 才能覆蓋手續費。高頻訊號不等於正期望值。
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-1 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+        💡 結論：核心定位修正為「輔助散戶降低情緒化、防禦無效訊號」，非保證獲利。
+      </div>
+    </div>
+
+    <!-- [02] 核心解藥與四層解耦哲學 -->
+    <div class="glass-card p-2.5 flex flex-col justify-between border-t-2 border-t-blue-500">
+      <div>
+        <div class="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-800">
+          <div class="font-bold text-slate-100 flex items-center">
+            <span class="badge-num bg-blue-600">02</span>
+            <span>混合解耦哲學 (Decoupled Architecture)</span>
+          </div>
+          <span class="text-[10px] text-blue-400 font-mono">arXiv:2605.19337</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-1.5 mb-1.5">
+          <div class="bg-slate-900/80 p-1.5 rounded border border-blue-900/40">
+            <span class="text-blue-300 font-bold block">2.1 確定性演算法 (Python)</span>
+            <span class="text-[11px] text-slate-400">職責：幾何空間 100% 精確</span>
+            <p class="text-slate-300 mt-0.5">Swing High/Low、供需區邊界座標、ATR 波動度。<strong class="text-emerald-400">杜絕 LLM 空間幻覺</strong>。</p>
+          </div>
+          <div class="bg-slate-900/80 p-1.5 rounded border border-emerald-900/40">
+            <span class="text-emerald-300 font-bold block">2.2 機器學習 (XGBoost)</span>
+            <span class="text-[11px] text-slate-400">職責：客觀條件機率評估</span>
+            <p class="text-slate-300 mt-0.5">嚴格 Walk-forward 特徵工程，輸出突破/反彈勝率 $W$。設立 $W \ge 55\%$ 門檻濾網。</p>
+          </div>
+          <div class="bg-slate-900/80 p-1.5 rounded border border-purple-900/40">
+            <span class="text-purple-300 font-bold block">2.3 LLM 推理代理 (CoT Agent)</span>
+            <span class="text-[11px] text-slate-400">職責：語意情境與風險敘事</span>
+            <p class="text-slate-300 mt-0.5">接收結構化 JSON，比對 Price Action 知識庫（S/R Flip、假突破），生成審計報告。</p>
+          </div>
+          <div class="bg-slate-900/80 p-1.5 rounded border border-rose-900/40">
+            <span class="text-rose-300 font-bold block">2.4 獨立風控引擎 (Risk Veto)</span>
+            <span class="text-[11px] text-slate-400">職責：最高否決權 (Veto Power)</span>
+            <p class="text-slate-300 mt-0.5">檢驗 $RR \ge 2.0$、$E > 0$ 與三級熔斷降級。未達標堅決輸出 `NO_TRADE`。</p>
+          </div>
+        </div>
+
+        <div class="bg-blue-950/40 border border-blue-800/60 p-1.5 rounded text-[11px]">
+          <strong class="text-blue-300">解耦防線：</strong> LLM 嚴禁執行數值與幾何運算；空間幾何交由程式，文字情境交由 LLM。
+        </div>
+      </div>
+      <div class="mt-1 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+        🔬 依據：Agentic Trading 綜述指出錯誤主張會透過 Tool-calling 放大為連鎖部位崩潰。
+      </div>
+    </div>
+
+    <!-- [03] 四層八模組決策管線 -->
+    <div class="glass-card p-2.5 flex flex-col justify-between border-t-2 border-t-emerald-500">
+      <div>
+        <div class="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-800">
+          <div class="font-bold text-slate-100 flex items-center">
+            <span class="badge-num bg-emerald-600">03</span>
+            <span>四層八模組決策管線 (System Pipeline)</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-mono">L1 ➔ L2 ➔ L3 ➔ L4</span>
+        </div>
+
+        <div class="space-y-1 text-slate-300">
+          <div class="flex items-start gap-1.5 bg-slate-900/70 p-1 rounded border-l-2 border-slate-500">
+            <span class="font-mono text-slate-400 text-[10px] pt-0.5">L1</span>
+            <div class="text-[11px]">
+              <strong class="text-slate-200">輸入與資料層：</strong>
+              <span class="text-slate-400">[1.1] 偏好模組 (風險限額) ➔ [1.2] 資料接收 (OHLCV/Volume Z-score)</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-1.5 bg-slate-900/70 p-1 rounded border-l-2 border-emerald-500">
+            <span class="font-mono text-emerald-400 text-[10px] pt-0.5">L2</span>
+            <div class="text-[11px]">
+              <strong class="text-emerald-300">核心分析引擎：</strong>
+              <span class="text-slate-400">[2.1] 供需區算術 (S/R Flip) ➔ [2.2] 勝率預測 (XGBoost 濾網 $W \ge 0.55$)</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-1.5 bg-slate-900/70 p-1 rounded border-l-2 border-purple-500">
+            <span class="font-mono text-purple-400 text-[10px] pt-0.5">L3</span>
+            <div class="text-[11px]">
+              <strong class="text-purple-300">推理與知識層：</strong>
+              <span class="text-slate-400">[3.1] 領域知識庫 (Spring/Upthrust) ➔ [3.2] CoT 推理 Agent (情境論證)</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-1.5 bg-slate-900/70 p-1 rounded border-l-2 border-rose-500">
+            <span class="font-mono text-rose-400 text-[10px] pt-0.5">L4</span>
+            <div class="text-[11px]">
+              <strong class="text-rose-300">風控與輸出層：</strong>
+              <span class="text-slate-400">[4.1] 決策風控引擎 (ATR 停損/期望值檢驗) ➔ [4.2] 輸出介面 (APPROVED / NO_TRADE)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-2 p-1.5 bg-emerald-950/30 border border-emerald-800/40 rounded text-[11px]">
+          <span class="text-emerald-300 font-semibold">⚡ 流水線中斷邏輯：</span>
+          若 XGBoost 勝率 &lt; 55% 或期望值 $E \le 0$，訊號立即短路中止，避免進入下游客戶端。
+        </div>
+      </div>
+      <div class="mt-1 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+        🛡️ Human-in-the-Loop: 系統僅產出審計卡，最終執行需交易員確認。
+      </div>
+    </div>
+
+    <!-- [04] 數理模型與三級防禦熔斷 -->
+    <div class="glass-card p-2.5 flex flex-col justify-between border-t-2 border-t-amber-500">
+      <div>
+        <div class="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-800">
+          <div class="font-bold text-slate-100 flex items-center">
+            <span class="badge-num bg-amber-600">04</span>
+            <span>數理模型與三級熔斷 (Mathematical Rigor)</span>
+          </div>
+          <span class="text-[10px] text-amber-400 font-mono">Hard Risk Limits</span>
+        </div>
+
+        <div class="space-y-1.5">
+          <div class="bg-slate-900/80 p-1.5 rounded border border-slate-800 font-mono text-[11px]">
+            <div class="text-amber-300 font-bold mb-0.5">4.1 數學期望值公式 (Expectation Gate)</div>
+            <div class="text-white bg-black/40 p-1 rounded text-center">
+              E = W × RR − (1 − W) &gt; 0
+            </div>
+            <div class="text-slate-400 text-[10px] mt-0.5">※ 硬性規定：期望值大於 0 方可放行，否則強制否決。</div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-1 text-[11px]">
+            <div class="bg-slate-900/60 p-1 rounded border border-slate-800">
+              <span class="text-slate-400 block text-[10px]">4.2 風報比門檻</span>
+              <span class="font-bold text-emerald-400">RR ≥ 2.0</span>
+            </div>
+            <div class="bg-slate-900/60 p-1 rounded border border-slate-800">
+              <span class="text-slate-400 block text-[10px]">4.3 動態 ATR 停損</span>
+              <span class="font-mono text-white text-[10px]">Zone ± 1.0 × ATR₁₄</span>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/80 p-1.5 rounded border border-rose-900/50 text-[11px]">
+            <span class="text-rose-400 font-bold block mb-0.5">4.4 三級安全降級與熔斷協議：</span>
+            <div class="space-y-0.5 text-slate-300 text-[10px]">
+              • <strong class="text-amber-300">Level 1 (波動暴增)</strong>: ATR &gt; 歷史 2.5 倍 ➔ 倉位折半、提高 RR。<br>
+              • <strong class="text-rose-300">Level 2 (連虧防禦)</strong>: 當日 2 連敗或回撤達 3% ➔ 今日全面禁單。<br>
+              • <strong class="text-red-400">Level 3 (連線異常)</strong>: API 延遲 &gt; 5 秒 ➔ 啟動全單保護與唯讀模式。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-1 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+        📌 嚴格倉位預算：$\text{Position} = \frac{\text{Capital} \times \text{Risk\%}}{|\text{Entry} - \text{StopLoss}|}$
+      </div>
+    </div>
+
+    <!-- [05] 嚴格評估與 Walk-Forward 實驗矩陣 -->
+    <div class="glass-card p-2.5 flex flex-col justify-between border-t-2 border-t-indigo-500">
+      <div>
+        <div class="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-800">
+          <div class="font-bold text-slate-100 flex items-center">
+            <span class="badge-num bg-indigo-600">05</span>
+            <span>科學回測與實驗矩陣 (Scientific Validation)</span>
+          </div>
+          <span class="text-[10px] text-indigo-400 font-mono">FINSABER 準則</span>
+        </div>
+
+        <div class="space-y-1.5 text-[11px]">
+          <div class="bg-slate-900/70 p-1.5 rounded border border-slate-800">
+            <strong class="text-indigo-300 block mb-0.5">5.1 防洩漏協定 (Anti-Leakage Protocol)</strong>
+            <p class="text-slate-300 text-[10px]">
+              • 滾動時間序列驗證 (Walk-Forward)：嚴格依序訓練 (60%) ➔ 驗證 (20%) ➔ 測試 (20%)。<br>
+              • 嚴禁隨機切分（No Shuffle），特徵標準化參數僅由過去窗口估計。
+            </p>
+          </div>
+
+          <div class="bg-slate-900/70 p-1.5 rounded border border-slate-800">
+            <strong class="text-slate-200 block mb-0.5">5.2 六大多維對照基準 (Baselines)</strong>
+            <div class="grid grid-cols-3 gap-1 text-[10px] text-center">
+              <span class="bg-slate-800 p-0.5 rounded text-slate-300">1. Buy & Hold</span>
+              <span class="bg-slate-800 p-0.5 rounded text-slate-300">2. Random (Same RR)</span>
+              <span class="bg-slate-800 p-0.5 rounded text-slate-300">3. MA Crossover</span>
+              <span class="bg-slate-800 p-0.5 rounded text-slate-300">4. RSI 震盪</span>
+              <span class="bg-slate-800 p-0.5 rounded text-slate-300">5. XGBoost Only</span>
+              <span class="bg-slate-800 p-0.5 rounded text-slate-300">6. LLM Only</span>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/70 p-1.5 rounded border border-slate-800 text-[10px]">
+            <strong class="text-emerald-300 block">5.3 摩擦成本敏感性測試：</strong>
+            <span class="text-slate-300">在 0 bp, 5 bp, 10 bp, 20 bp 滑價下驗證策略淨期望值穩健性。</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-1 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+        📊 必報指標：Sharpe, Sortino, MDD, 淨勝率, 實現 RR, White's Reality Check。
+      </div>
+    </div>
+
+    <!-- [06] 專題具體產出與審計交付卡 -->
+    <div class="glass-card p-2.5 flex flex-col justify-between border-t-2 border-t-purple-500">
+      <div>
+        <div class="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-800">
+          <div class="font-bold text-slate-100 flex items-center">
+            <span class="badge-num bg-purple-600">06</span>
+            <span>專案產出與審計交付卡 (Deliverables & HITL)</span>
+          </div>
+          <span class="text-[10px] text-purple-400 font-mono">Open Source</span>
+        </div>
+
+        <!-- 審計卡範例 -->
+        <div class="bg-slate-900/90 border border-emerald-500/40 rounded p-1.5 mb-1.5 shadow">
+          <div class="flex items-center justify-between mb-1 pb-1 border-b border-slate-800">
+            <span class="font-bold text-white text-[11px]">AUDIT CARD: BTC/USDT (15M)</span>
+            <span class="px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-black rounded text-[10px] border border-emerald-500/30">
+              APPROVED
+            </span>
+          </div>
+          <div class="grid grid-cols-3 gap-1 text-[10px] mb-1">
+            <div class="bg-black/30 p-1 rounded">
+              <span class="text-slate-400 block">進場點位</span>
+              <strong class="text-white">$65,000.00</strong>
+            </div>
+            <div class="bg-black/30 p-1 rounded">
+              <span class="text-slate-400 block">硬停損點</span>
+              <strong class="text-rose-400">$64,200.00</strong>
+            </div>
+            <div class="bg-black/30 p-1 rounded">
+              <span class="text-slate-400 block">目標停利</span>
+              <strong class="text-emerald-400">$67,000.00</strong>
+            </div>
+          </div>
+          <div class="text-[10px] text-slate-300 leading-tight">
+            • <strong class="text-amber-300">數理指標</strong>: RR = 2.50 | XGBoost W = 62.4% | E = +0.55 &gt; 0<br>
+            • <strong class="text-purple-300">CoT 推理</strong>: 4H 需求區帶量拒絕，長下影線成立，結構維持完整。
+          </div>
+        </div>
+
+        <div class="space-y-1 text-[11px] text-slate-300">
+          <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded">
+            <span>📦 核心模組套件</span>
+            <span class="text-emerald-400 font-semibold">100% 測試通過</span>
+          </div>
+          <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded">
+            <span>💻 Streamlit 互動平台</span>
+            <span class="text-blue-400 font-semibold">app.py</span>
+          </div>
+          <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded">
+            <span>🔗 GitHub 連接</span>
+            <span class="text-purple-400 font-semibold">ping29065147</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-1 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+        🏆 核心貢獻：將主觀技術分析轉化為可審計、可否決、防洩漏的工程管線。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 底部版權與註腳 -->
+  <footer class="mt-2 pt-1 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-500">
+    <div>
+      專案目錄：<code class="text-slate-400">C:\Users\user\.gemini\antigravity\scratch\Hybrid-TPA-Agent</code>
+    </div>
+    <div>
+      Hybrid TPA-Agent © 2026 ｜ 基於金融 LLM Agent 與微結構研究成果
+    </div>
+  </footer>
+</body>
+</html>
