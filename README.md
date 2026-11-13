@@ -6,6 +6,16 @@
 [![Architecture: 4--Layer](https://img.shields.io/badge/Architecture-4--Layer%20Decoupled-green.svg)](#系統架構)
 [![GitHub](https://img.shields.io/badge/GitHub-mumumush-181717.svg?logo=github)](https://github.com/mumumush/Hybrid-TPA-Agent)
 
+<div align="center">
+  <img src="docs/assets/hybrid_tpa_poster.jpg" alt="Hybrid TPA-Agent 系統架構全景海報" width="92%">
+  <p><strong>「演算法負責精確，機器學習負責機率，LLM 負責情境！」</strong></p>
+  <p>
+    <a href="INFOGRAPHIC_A4.md">📑 檢視 A4 橫式高密度 Blueprint 規格書</a> • 
+    <a href="docs/infographic_a4_landscape.html">🌐 互動式 / 轉存 PDF 藍圖</a> • 
+    <a href="DESIGN.md">📐 系統詳細設計書</a>
+  </p>
+</div>
+
 ---
 
 ## 專案核心摘要 (300 字標準摘要)
