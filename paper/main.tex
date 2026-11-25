@@ -73,6 +73,7 @@ Figure~\ref{fig:architecture} illustrates the end-to-end data flow across the fo
 
 \begin{figure*}[t]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
     node distance=0.6cm and 0.9cm,
     box/.style={rectangle, draw=black!80, rounded corners=3pt, minimum width=3.3cm, minimum height=0.85cm, align=center, font=\footnotesize, fill=blue!5},
@@ -120,7 +121,8 @@ Figure~\ref{fig:architecture} illustrates the end-to-end data flow across the fo
 \draw[arrow] (m32.east) -- ++(0.35,0) |- (m41.west);
 \draw[arrow] (m41) -- (m42);
 \draw[arrow] (m41.east) -- ++(0.35,0) |- node[near end, right, font=\scriptsize]{Veto} (notrade.east);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \caption{Decoupled four-layer, eight-module architecture of Hybrid TPA-Agent. Deterministic geometry and XGBoost probability estimation precede CoT narrative reasoning, while Layer~4 retains final veto authority.}
 \label{fig:architecture}
 \end{figure*}
@@ -244,6 +246,7 @@ Table~\ref{tab:verification} summarizes the verified test cases executed via \te
 \centering
 \caption{Verified System Tests and Deterministic Risk-Gate Scenarios}
 \label{tab:verification}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Module / Scenario} & \textbf{Verified Invariant / Condition} & \textbf{Outcome} \\
@@ -257,7 +260,8 @@ L4 Valid Approval & $W=0.60, RR=2.50 \Rightarrow E=0.90 > 0$ & \texttt{APPROVED}
 L4 Level~2 Breaker & $\text{consecutive\_losses} = 2$ & \texttt{NO\_TRADE} \\
 L4 Level~3 Breaker & $\text{latency\_seconds} > 5.0$ & \texttt{NO\_TRADE} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \section{Experimental Evaluation Protocol}
