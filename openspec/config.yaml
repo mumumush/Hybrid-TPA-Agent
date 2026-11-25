@@ -1,0 +1,28 @@
+# OpenSpec Project Configuration (Fission-AI/OpenSpec)
+# Repository: https://github.com/mumumush/Hybrid-TPA-Agent
+
+schema: spec-driven
+
+context: |
+  Project: Hybrid TPA-Agent (Hybrid Short-Term Trading Intelligence Agent)
+  Architecture: 4-Layer, 8-Module Decoupled Pipeline
+    - Layer 1 (src/layer1_data/): User risk profile & OHLCV data ingestion with ATR(14) and volume Z-score
+    - Layer 2 (src/layer2_core_engine/): Deterministic Swing High/Low, Supply/Demand & S/R Flip geometry + XGBoost conditional win-rate filtering (W >= 0.55)
+    - Layer 3 (src/layer3_reasoning/): Curated Price Action Knowledge Base + CoT Planning Agent (strictly prohibited from arithmetic/coordinate alteration)
+    - Layer 4 (src/layer4_risk_output/): Veto-enabled RiskManager (RR >= 2.0, E > 0, 1.0*ATR buffer, Level 2 & Level 3 circuit breakers) + Audit Card ReportGenerator + Streamlit HITL UI (app.py)
+  Tech Stack: Python 3.10+, Pandas, NumPy, XGBoost, Plotly, Streamlit, LaTeX (IEEEtran)
+  Test Runner: python run_tests.py (plus pytest unit tests in tests/)
+  Academic Output: Overleaf-ready IEEE Conference Paper draft in paper/
+
+rules:
+  proposal:
+    - Clearly state research or engineering motivation and scope
+    - Preserve strict decoupling between deterministic math, ML probability, LLM CoT reasoning, and risk veto gates
+  specs:
+    - Use Given/When/Then or WHEN/THEN behavioral scenario format
+    - Explicitly specify threshold values, invariants, and NO_TRADE failure paths
+  design:
+    - Document exact data contracts and module boundaries across Layers 1 to 4
+    - Prevent look-ahead bias and prohibit LLM arithmetic calculation
+  tasks:
+    - Keep tasks verifiable against unit tests (run_tests.py) or artifact builds

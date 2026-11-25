@@ -10,6 +10,8 @@
   <img src="docs/assets/hybrid_tpa_poster.jpg" alt="Hybrid TPA-Agent 系統架構全景海報" width="92%">
   <p><strong>「演算法負責精確，機器學習負責機率，LLM 負責情境！」</strong></p>
   <p>
+    <a href="paper/main.tex">📝 IEEE Conference 論文草稿 (Overleaf LaTeX)</a> • 
+    <a href="openspec/">📋 OpenSpec 規格與變更追蹤 (SDD)</a> • 
     <a href="INFOGRAPHIC_A4.md">📑 檢視 A4 橫式高密度 Blueprint 規格書</a> • 
     <a href="docs/infographic_a4_landscape.html">🌐 互動式 / 轉存 PDF 藍圖</a> • 
     <a href="DESIGN.md">📐 系統詳細設計書</a>
@@ -105,6 +107,21 @@ Hybrid-TPA-Agent/
 ├── requirements.txt               # Python 依賴清單
 ├── .gitignore                     # Git 忽略設定
 ├── setup_github.ps1               # 一鍵連接與推送 GitHub 輔助腳本
+├── paper/                         # Overleaf-ready IEEE Conference 論文草稿
+│   ├── main.tex                   # IEEEtran 雙欄會議論文主檔 (含 TikZ 架構圖與風控演算法)
+│   ├── references.bib             # 學術與監管文獻 BibTeX 資料庫
+│   └── README.md                  # Overleaf 匯入與 MCP / LaTeX 編譯說明
+├── openspec/                      # OpenSpec 規格驅動開發 (Spec-Driven Development)
+│   ├── config.yaml                # OpenSpec 專案設定與架構規則
+│   ├── specs/                     # 系統行為基準規格 (Source of Truth)
+│   │   ├── data-ingestion/spec.md
+│   │   ├── geometry-engine/spec.md
+│   │   ├── win-rate-prediction/spec.md
+│   │   ├── cot-reasoning/spec.md
+│   │   └── risk-governance/spec.md
+│   └── changes/                   # 變更提案與任務清單
+│       ├── add-ieee-conference-paper/
+│       └── add-walkforward-backtest/
 ├── docs/
 │   ├── literature_review.md       # 最新學術文獻、FINRA 監管數據與案例庫
 │   └── infographic_a4_landscape.html # 視覺化 A4 橫式高密度資訊圖表
